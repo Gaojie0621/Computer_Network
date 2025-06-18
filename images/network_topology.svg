@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 客户端 -->
+  <rect x="50" y="70" width="80" height="60" fill="none" stroke="#333" stroke-width="2" rx="5"/>
+  <text x="90" y="90" text-anchor="middle" font-size="14" font-weight="bold">客户端</text>
+  <text x="90" y="110" text-anchor="middle" font-size="12">192.168.1.100</text>
+  <text x="90" y="125" text-anchor="middle" font-size="10">端口:12345</text>
+  
+  <!-- 交换机 -->
+  <rect x="200" y="70" width="80" height="60" fill="none" stroke="#333" stroke-width="2" rx="5"/>
+  <text x="240" y="90" text-anchor="middle" font-size="14" font-weight="bold">交换机</text>
+  <text x="240" y="110" text-anchor="middle" font-size="12">Switch</text>
+  <text x="240" y="125" text-anchor="middle" font-size="10">MAC转发</text>
+  
+  <!-- 路由器 -->
+  <rect x="350" y="70" width="80" height="60" fill="none" stroke="#333" stroke-width="2" rx="5"/>
+  <text x="390" y="90" text-anchor="middle" font-size="14" font-weight="bold">路由器</text>
+  <text x="390" y="110" text-anchor="middle" font-size="12">124.156.78.90</text>
+  <text x="390" y="125" text-anchor="middle" font-size="10">NAT转换</text>
+  
+  <!-- 互联网 -->
+  <ellipse cx="530" cy="100" rx="50" ry="30" fill="none" stroke="#333" stroke-width="2"/>
+  <text x="530" y="100" text-anchor="middle" font-size="14" font-weight="bold">互联网</text>
+  <text x="530" y="115" text-anchor="middle" font-size="10">Internet</text>
+  
+  <!-- 服务器 -->
+  <rect x="650" y="70" width="80" height="60" fill="none" stroke="#333" stroke-width="2" rx="5"/>
+  <text x="690" y="90" text-anchor="middle" font-size="14" font-weight="bold">服务器</text>
+  <text x="690" y="110" text-anchor="middle" font-size="12">203.208.60.1</text>
+  <text x="690" y="125" text-anchor="middle" font-size="10">端口:80</text>
+  
+  <!-- 连接线 -->
+  <line x1="130" y1="100" x2="200" y2="100" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="280" y1="100" x2="350" y2="100" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="430" y1="100" x2="480" y2="100" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="580" y1="100" x2="650" y2="100" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- 网络标识 -->
+  <text x="165" y="50" text-anchor="middle" font-size="12" fill="#666">局域网 192.168.1.0/24</text>
+  <text x="520" y="50" text-anchor="middle" font-size="12" fill="#666">公网</text>
+  
+  <!-- 箭头定义 -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+</svg> 
