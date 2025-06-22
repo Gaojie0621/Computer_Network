@@ -14,7 +14,7 @@
 ### 1.2 域名结构
 - **层次结构**：从右到左，由高到低
   - 根域名（.）
-  - 顶级域名（TLD）：.com、.org、.net、.cn等
+  - 顶级域名（TLD，top level domain）：.com、.org、.net、.cn等
   - 二级域名：baidu、google等
   - 三级域名：www、mail、blog等
 - **示例**：www.baidu.com.
