@@ -145,7 +145,26 @@ def is_valid_utf8(data):
   - Use UTF-8MB4 for DB fields
   - Add BOM when saving files (Windows only)
 
-[^bom-footnote]: 
+
+
+### 4.3 Common Issues & Solutions
+| Issue         | Possible Cause         | Solution                        |
+|---------------|-----------------------|----------------------------------|
+| Garbled text  | Encoding mismatch     | Use UTF-8 consistently           |
+| Truncated     | 4-byte char handling  | Use UTF-8MB4 in DB               |
+| Validation bypass | Encoding confusion | Normalize input before validation|
+
+## 5. Encoding System Comparison Summary
+
+| Feature      | ASCII      | Unicode      | UTF-8           |
+|--------------|------------|--------------|-----------------|
+| Goal         | English    | Global text  | Efficient Unicode|
+| Capacity     | 128        | 1,114,112    | Same as Unicode |
+| Storage      | 1B/char    | Not direct   | 1-4B/char       |
+| Compatibility| Standard   | Includes ASCII| Fully compatible|
+| Use case     | Legacy     | Modern std   | Network/storage |
+
+---
 BOM (Byte Order Mark):
 - **Purpose:** Identifies file encoding and byte order, helps OS/apps parse files correctly.
 - **Format:** Special byte sequence at file start, varies by encoding:
@@ -165,22 +184,3 @@ BOM (Byte Order Mark):
   - Not all systems/tools support BOM; some Linux tools/scripts may fail.
   - UTF-8 has no byte order issue, BOM is not required and may cause compatibility issues.
   - In web dev, BOM in UTF-8 files may affect JS/CSS parsing (unexpected chars).
-
-### 4.3 Common Issues & Solutions
-| Issue         | Possible Cause         | Solution                        |
-|---------------|-----------------------|----------------------------------|
-| Garbled text  | Encoding mismatch     | Use UTF-8 consistently           |
-| Truncated     | 4-byte char handling  | Use UTF-8MB4 in DB               |
-| Validation bypass | Encoding confusion | Normalize input before validation|
-
-## 5. Encoding System Comparison Summary
-
-| Feature      | ASCII      | Unicode      | UTF-8           |
-|--------------|------------|--------------|-----------------|
-| Goal         | English    | Global text  | Efficient Unicode|
-| Capacity     | 128        | 1,114,112    | Same as Unicode |
-| Storage      | 1B/char    | Not direct   | 1-4B/char       |
-| Compatibility| Standard   | Includes ASCII| Fully compatible|
-| Use case     | Legacy     | Modern std   | Network/storage |
-
-</rewritten_file> 

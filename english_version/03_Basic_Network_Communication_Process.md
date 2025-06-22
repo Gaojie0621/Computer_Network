@@ -98,11 +98,9 @@
 | DNS     | 53   | UDP/TCP  | Domain name resolution |
 | SMTP    | 25   | TCP      | Email sending |
 
-### 4.3 Port Mapping Diagram
 
-<!-- Port mapping SVG omitted -->
 
-### 4.4 How Port Mapping Works
+### 4.3 How Port Mapping Works
 
 1. **Outbound Mapping**
    - When an internal device initiates a connection, the router assigns a unique public port for each connection

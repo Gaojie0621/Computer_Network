@@ -38,9 +38,9 @@ Solution: The router uses NAT to "translate" your private IP into a public IP.
 Scenario: You use your phone (192.168.1.100) to access Baidu (220.181.38.148).
 
 **Steps:**
-- The phone sends a request to the router: "I want to visit Baidu."
+- The phone sends a request to the router: "I want to visit Google."
 - The router replaces your private IP (192.168.1.100) with its public IP (e.g., 120.80.1.1) and records the connection (like a logbook).
-- When Baidu replies, the router uses the logbook to forward the data to your phone.
+- When Google replies, the router uses the logbook to forward the data to your phone.
 
 **Types of NAT**
 - One-to-one: A private IP is mapped to a fixed public IP (commonly used by enterprises).
@@ -52,34 +52,36 @@ You (private IP) call a customer (Internet), the front desk (NAT router) uses th
 
 ### 1.2 DNS Resolution
 **Why is DNS needed?**
-Problem: Humans can't remember IPs (e.g., 220.181.38.148), but can remember domain names (e.g., www.baidu.com).
+Problem: Humans can't remember IPs (e.g., 220.181.38.148), but can remember domain names (e.g., www.google.com).
 
 Solution: DNS translates domain names into IPs, like a "phone book."
 
 **DNS Resolution Process**
-- Enter website: You type www.baidu.com in your browser.
+- Enter website: You type www.google.com in your browser.
 - Local query:
     - Check browser cache → computer cache → router cache.
     - If not found, ask the local DNS server (usually provided by ISP, e.g., 114.114.114.114).
 - Recursive query:
     - Local DNS asks the root name server (13 groups worldwide): "Who manages .com?"
     - The root server returns the address of the .com top-level domain server.
-    - Local DNS then asks the .com server: "Who manages baidu.com?"
-    - Finally gets the IP for www.baidu.com (e.g., 220.181.38.148).
-- Return result: The browser uses this IP to access Baidu's server.
+    - Local DNS then asks the .com server: "Who manages google.com?"
+    - Finally gets the IP for www.google.com (e.g., 220.181.38.148).
+- Return result: The browser uses this IP to access google's server.
 
 **Analogy**
 Like asking for directions:
-You ask, "Where is Xinhua Bookstore?" (domain name).
+You ask, "Where is David's Bookstore?" (domain name).
 The local guide (DNS) checks their notebook (cache) first, if not found, asks a higher-level navigation system (root name server).
-Finally tells you "Xinhua Bookstore is at 123 Renmin Road" (IP address).
+Finally tells you "David's Bookstore is at 123 Abby Road" (IP address).
 
 ### 1.3 Example of the Whole Process
-Suppose you use your home WiFi (private IP) to access Baidu:
-- Your computer (192.168.1.100) asks DNS: "What is the IP of www.baidu.com?" → gets 220.181.38.148.
-- The router uses NAT to change the source IP of your request packet from 192.168.1.100 to public IP 120.80.1.1 and sends it to Baidu.
-- Baidu replies to 120.80.1.1, and the router forwards it to 192.168.1.100 based on the NAT record.
-- You see the Baidu webpage.
+
+Suppose you use your home WiFi (private IP) to access Google:
+
+- Your computer (`192.168.1.100`) asks DNS: "What is the IP of `www.google.com`?" → gets `142.250.190.196` (example Google IP).
+- The router uses **NAT** to change the source IP of your request packet from `192.168.1.100` to the public IP `120.80.1.1`, and sends it to **Google**.
+- **Google** replies to `120.80.1.1`, and the router forwards it to `192.168.1.100` based on the NAT record.
+- You see the **Google** webpage.
 
 ### 1.4 IP Allocation in Home Networks
 **(1) Router's IP**
@@ -96,17 +98,23 @@ Router itself: 192.168.1.1 (gateway address)
 These private IPs are only valid within the home LAN and cannot be accessed directly from the Internet.
 
 #### Complete Home Internet Process (with NAT and DNS)
-Suppose you use your computer to access www.baidu.com:
+
+Suppose you use your computer to access www.google.com:
+
 **1. DNS Resolution:**
-- Computer asks DNS server: "What is the IP of www.baidu.com?" → gets 220.181.38.148.
+- Computer asks DNS server: "What is the IP of www.google.com?" → gets `142.250.190.196` (example Google IP).
+
 **2. Send Request:**
-- Computer (192.168.1.100) sends the packet to the router (192.168.1.1).
+- Computer (`192.168.1.100`) sends the packet to the router (`192.168.1.1`).
+
 **3. NAT Translation:**
-- Router changes the source IP of the packet from 192.168.1.100 to its public IP (e.g., 120.80.1.1) and records the connection (port mapping).
+- Router changes the source IP of the packet from `192.168.1.100` to its public IP (e.g., `120.80.1.1`) and records the connection (port mapping).
+
 **4. Internet Transmission:**
-- Baidu receives the request and replies to the router's public IP 120.80.1.1.
+- **Google** receives the request and replies to the router's public IP `120.80.1.1`.
+
 **5. NAT Reverse Translation:**
-- Router forwards the reply to computer 192.168.1.100 based on the record.
+- Router forwards the reply to computer `192.168.1.100` based on the record.
 
 ## 2. Static IP vs Dynamic IP
 ### 2.1 Concepts
@@ -117,34 +125,42 @@ A static IP is manually configured and fixed, it does not change automatically.
 - Permanence: Won't change unless manually modified.
 - Manual configuration: Need to manually enter IP, subnet mask, gateway, etc. on the device or router.
 Suitable for: Servers, network devices, surveillance cameras, etc. that require long-term stable access.
+
 **(3) Advantages**
 - Stability: Suitable for services that require long-term remote access (e.g., websites, VPN, NAS).
 - Easy management: Fixed IPs make it easier for network admins to maintain and troubleshoot.
 - Suitable for business use: Enterprise servers, mail servers, etc. must use static IPs.
+
 **(4) Disadvantages**
 - Complex management: Each device must be configured separately, easy to have conflicts (e.g., two devices set to the same IP).
 - Higher cost: ISPs usually charge for static public IPs (home broadband generally does not provide static IPs).
 - Security risk: Fixed IPs are easier targets for hackers, need extra protection.
+
 **(5) Scenarios**
 🌐 Server hosting (web/database servers)
 📹 Surveillance systems (IP cameras, NVR)
 🏢 Enterprise LAN devices (printers, access control)
 
+
 #### Dynamic IP
 **(1) Definition**
 A dynamic IP is automatically assigned and may change, usually by a DHCP (Dynamic Host Configuration Protocol) server.
+
 **(2) Features**
 - Temporariness: May change after lease expires (e.g., after router reboot or DHCP renewal).
 - Automatic acquisition: Devices get IPs from DHCP server automatically when connecting to the network (no manual setup needed).
 Suitable for: Ordinary home devices (phones, computers, smart home).
+
 **(3) Advantages**
 - Plug and play: Devices get IPs automatically when connecting, no manual configuration needed.
 - Saves IP resources: IPs can be reused (e.g., after a device disconnects, the IP can be assigned to a new device).
 - Suitable for home users: No need for fixed IPs for normal Internet, video, gaming, etc.
+
 **(4) Disadvantages**
 - Instability: IP may change, not suitable for services that require long-term remote access.
 - Depends on DHCP server: If DHCP fails, devices can't get IPs.
 - Not suitable for servers: Dynamic IPs can't guarantee stable external access.
+
 **(5) Scenarios**
 🏠 Home network (phones, computers, smart TVs)
 📱 Mobile devices (cafe, airport WiFi)
@@ -162,4 +178,4 @@ Suitable for: Ordinary home devices (phones, computers, smart home).
 Public IP: The "ID card" on the Internet, globally unique.
 Private IP: The "house number" inside the LAN, reusable.
 NAT: Technology to "disguise" private IPs as public IPs for Internet access.
-DNS: The "translator" that converts domain names (e.g., www.baidu.com) to IPs. 
+DNS: The "translator" that converts domain names (e.g., www.google.com) to IPs. 
