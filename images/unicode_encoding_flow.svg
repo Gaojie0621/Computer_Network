@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="700" height="360" viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg">
+  <g font-family="Arial, sans-serif" font-size="15">
+    <!-- 输入字符 -->
+    <rect x="40" y="40" width="120" height="44" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+    <text x="100" y="68" text-anchor="middle" font-weight="bold">输入字符</text>
+    <!-- 箭头1 -->
+    <line x1="160" y1="62" x2="210" y2="62" stroke="#1976d2" stroke-width="2" marker-end="url(#arrow)"/>
+    <!-- 查找Unicode码点 -->
+    <rect x="210" y="30" width="170" height="64" rx="10" fill="#fffde7" stroke="#fbc02d" stroke-width="2"/>
+    <text x="295" y="60" text-anchor="middle" font-weight="bold">查找Unicode码点</text>
+    <text x="295" y="80" text-anchor="middle" font-size="13" fill="#bdb76b">（U+0000 ~ U+10FFFF）</text>
+    <!-- 箭头2 -->
+    <line x1="380" y1="62" x2="440" y2="62" stroke="#388e3c" stroke-width="2" marker-end="url(#arrow)"/>
+    <!-- 判断码点范围 -->
+    <rect x="440" y="30" width="200" height="64" rx="10" fill="#e8f5e9" stroke="#388e3c" stroke-width="2"/>
+    <text x="540" y="60" text-anchor="middle" font-weight="bold">判断码点范围</text>
+    <text x="540" y="80" text-anchor="middle" font-size="13" fill="#388e3c">BMP 或 辅助平面？</text>
+    <!-- BMP分支 -->
+    <polyline points="540,94 540,130 250,130" stroke="#1976d2" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="110" y="130" width="280" height="60" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+    <text x="250" y="160" text-anchor="middle" font-weight="bold">BMP (U+0000~U+FFFF)</text>
+    <text x="250" y="180" text-anchor="middle" font-size="13">UTF-16: 单个16位单元</text>
+    <text x="250" y="200" text-anchor="middle" font-size="13">UTF-8: 1~3字节</text>
+    <!-- 辅助平面分支 -->
+    <polyline points="640,94 640,170 470,170" stroke="#fbc02d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <rect x="470" y="170" width="200" height="60" rx="10" fill="#fffde7" stroke="#fbc02d" stroke-width="2"/>
+    <text x="570" y="200" text-anchor="middle" font-weight="bold">辅助平面 (U+10000~U+10FFFF)</text>
+    <text x="570" y="220" text-anchor="middle" font-size="13">UTF-16: 代理对</text>
+    <text x="570" y="240" text-anchor="middle" font-size="13">UTF-8: 4字节</text>
+    <!-- 合流箭头 -->
+    <polyline points="250,190 250,270 570,270 570,230" stroke="#888" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+    <polyline points="570,230 570,270" stroke="#888" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+    <!-- 输出二进制编码 -->
+    <rect x="320" y="270" width="200" height="50" rx="10" fill="#e8f5e9" stroke="#388e3c" stroke-width="2"/>
+    <text x="420" y="300" text-anchor="middle" font-weight="bold">输出二进制编码</text>
+    <!-- 注释 -->
+    <text x="100" y="120" font-size="12" fill="#1976d2">BMP: 基本多文种平面</text>
+    <text x="650" y="160" font-size="12" fill="#fbc02d">辅助平面: 表情、历史文字等</text>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 L2,5 Z" fill="#333" />
+    </marker>
+  </defs>
+</svg> 
