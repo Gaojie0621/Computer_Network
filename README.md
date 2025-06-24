@@ -30,8 +30,6 @@
 
 ## 👤 适用人群
 - 计算机/网络相关专业学生
-- 后端/前端/运维/安全工程师
-- 网络工程师、IT面试者
 - 对网络原理感兴趣的自学者
 
 
@@ -81,8 +79,6 @@ This project systematically organizes core knowledge, principles, protocols, dev
 
 ## 👤 Target Audience
 - Students majoring in computer science/networking
-- Backend/frontend/DevOps/security engineers
-- Network engineers, IT job seekers
 - Self-learners interested in network fundamentals
 
 
